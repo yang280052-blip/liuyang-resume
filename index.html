@@ -213,26 +213,45 @@
             padding: 20px;
         }
         .video-item {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
         }
         .video-item:last-child {
             margin-bottom: 0;
         }
         .video-title {
-            background: rgba(255, 255, 255, 0.1);
             padding: 15px 20px;
             font-weight: 600;
             color: #fff;
             font-size: 1.1em;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        .video-title:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .video-title::after {
+            content: '▶';
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        .video-item.active .video-title::after {
+            transform: rotate(90deg);
         }
         .video-embed {
+            display: none;
             width: 100%;
             aspect-ratio: 16/9;
+        }
+        .video-item.active .video-embed {
+            display: block;
         }
         
         .footer {
@@ -397,6 +416,14 @@
                 </div>
             </div>
         </div>
+        
+        <script>
+            document.querySelectorAll('.video-title').forEach(title => {
+                title.addEventListener('click', function() {
+                    this.parentElement.classList.toggle('active');
+                });
+            });
+        </script>
     </div>
 </body>
 </html>
