@@ -16,9 +16,21 @@
             min-height: 100vh;
             padding: 40px 20px;
         }
-        .container {
-            max-width: 800px;
+        .main-container {
+            max-width: 1400px;
             margin: 0 auto;
+            display: flex;
+            gap: 30px;
+        }
+        .left-column {
+            flex: 6;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .right-column {
+            flex: 4;
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -118,6 +130,41 @@
         .awards li:last-child {
             border-bottom: none;
         }
+        
+        /* 视频区域 */
+        .video-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        .video-header h2 {
+            font-size: 1.8em;
+        }
+        .video-list {
+            padding: 20px;
+        }
+        .video-item {
+            margin-bottom: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .video-item:last-child {
+            margin-bottom: 0;
+        }
+        .video-title {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .video-embed {
+            width: 100%;
+            aspect-ratio: 16/9;
+        }
+        
         .footer {
             background: #f8f9fa;
             padding: 20px;
@@ -125,7 +172,19 @@
             color: #888;
             font-size: 0.9em;
         }
+        
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .left-column, .right-column {
+                flex: none;
+            }
+        }
         @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
             .header {
                 padding: 30px 20px;
             }
@@ -135,133 +194,125 @@
             .section {
                 padding: 20px;
             }
-            .exp-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
+            .video-header {
+                padding: 20px;
+            }
+            .video-header h2 {
+                font-size: 1.5em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>刘杨</h1>
-            <div class="title">西南政法大学 · 国际传播实验班 · 研究生</div>
-            <div class="contact">
-                <span class="contact-item">📱 17823039391</span>
-                <span class="contact-item">📧 873137943@qq.com</span>
+    <div class="main-container">
+        <!-- 左边：简历 -->
+        <div class="left-column">
+            <div class="header">
+                <h1>刘杨</h1>
+                <div class="title">西南政法大学 · 国际传播实验班 · 研究生</div>
+                <div class="contact">
+                    <span class="contact-item">📱 17823039391</span>
+                    <span class="contact-item">📧 873137943@qq.com</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">教育背景</h2>
+                <div class="experience">
+                    <div class="exp-header">
+                        <span class="exp-title">西南政法大学 · 国际传播实验班</span>
+                        <span class="exp-time">2024 - 至今</span>
+                    </div>
+                    <div class="exp-company">研究生</div>
+                </div>
+                <div class="experience">
+                    <div class="exp-header">
+                        <span class="exp-title">成都大学 · 文化产业管理</span>
+                        <span class="exp-time">2019 - 2023</span>
+                    </div>
+                    <div class="exp-company">本科</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">工作经历</h2>
+                <div class="experience">
+                    <div class="exp-header">
+                        <span class="exp-title">舆情分析员</span>
+                        <span class="exp-time">2025.6 - 2025.12</span>
+                    </div>
+                    <div class="exp-company">北京智慧星光有限公司重庆分公司</div>
+                    <div class="exp-desc">
+                        承担国际社会、中国热点议题及重庆市重点领域的日常舆情监测工作，独立撰写舆情简报、深度分析及专题研判报告60余篇。
+                    </div>
+                </div>
+                <div class="experience">
+                    <div class="exp-header">
+                        <span class="exp-title">实习记者</span>
+                        <span class="exp-time">2025.06 - 2025.09</span>
+                    </div>
+                    <div class="exp-company">西部国际传播中心</div>
+                    <div class="exp-desc">
+                        参与新闻选题策划、外采采访与后期剪辑全流程生产，累计完成20余部新闻作品，作品海内外播放量累计超10w+。
+                    </div>
+                </div>
+                <div class="experience">
+                    <div class="exp-header">
+                        <span class="exp-title">社区运营官</span>
+                        <span class="exp-time">2023.01 - 2023.09</span>
+                    </div>
+                    <div class="exp-company">龙湖集团</div>
+                    <div class="exp-desc">
+                        负责社区项目的品牌与品质宣传，策划并落地20余场社区活动，场均100+业主参与，好评率98%。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">专业技能</h2>
+                <div class="skills">
+                    <span class="skill-tag">内容生产</span>
+                    <span class="skill-tag">舆情分析</span>
+                    <span class="skill-tag">AIGC视频创作</span>
+                    <span class="skill-tag">国际传播</span>
+                    <span class="skill-tag">新媒体运营</span>
+                    <span class="skill-tag">英语CET-6</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">获奖经历</h2>
+                <ul class="awards">
+                    <li>🏆 重庆市《渝尚法》大学生AI短视频大赛 三等奖</li>
+                    <li>🏅 西南政法大学 校级二等奖学金</li>
+                    <li>🏅 成都大学 校级二等奖学金</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                © 2026 刘杨 | 欢迎联系
             </div>
         </div>
         
-        <div class="section">
-            <h2 class="section-title">教育背景</h2>
-            <div class="experience">
-                <div class="exp-header">
-                    <span class="exp-title">西南政法大学 · 国际传播实验班</span>
-                    <span class="exp-time">2024 - 至今</span>
-                </div>
-                <div class="exp-company">研究生</div>
+        <!-- 右边：视频作品 -->
+        <div class="right-column">
+            <div class="video-header">
+                <h2>🎬 AI视频作品</h2>
             </div>
-            <div class="experience">
-                <div class="exp-header">
-                    <span class="exp-title">成都大学 · 文化产业管理</span>
-                    <span class="exp-time">2019 - 2023</span>
+            <div class="video-list">
+                <div class="video-item">
+                    <div class="video-title">《霓虹别跑》</div>
+                    <iframe class="video-embed" src="//player.bilibili.com/player.html?bvid=BV1esZYBtEaW&page=1&autoplay=0" allowfullscreen></iframe>
                 </div>
-                <div class="exp-company">本科</div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">工作经历</h2>
-            <div class="experience">
-                <div class="exp-header">
-                    <span class="exp-title">舆情分析员</span>
-                    <span class="exp-time">2025.6 - 2025.12</span>
+                <div class="video-item">
+                    <div class="video-title">《末日便利店》</div>
+                    <iframe class="video-embed" src="//player.bilibili.com/player.html?bvid=BV1szZJB6ExT&page=1&autoplay=0" allowfullscreen></iframe>
                 </div>
-                <div class="exp-company">北京智慧星光有限公司重庆分公司</div>
-                <div class="exp-desc">
-                    承担国际社会、中国热点议题及重庆市重点领域的日常舆情监测工作，独立撰写舆情简报、深度分析及专题研判报告60余篇。
+                <div class="video-item">
+                    <div class="video-title">《救赎之战》</div>
+                    <iframe class="video-embed" src="//player.bilibili.com/player.html?bvid=BV1shZ4BFEkm&page=1&autoplay=0" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="experience">
-                <div class="exp-header">
-                    <span class="exp-title">实习记者</span>
-                    <span class="exp-time">2025.06 - 2025.09</span>
-                </div>
-                <div class="exp-company">西部国际传播中心</div>
-                <div class="exp-desc">
-                    参与新闻选题策划、外采采访与后期剪辑全流程生产，累计完成20余部新闻作品，作品海内外播放量累计超10w+。
-                </div>
-            </div>
-            <div class="experience">
-                <div class="exp-header">
-                    <span class="exp-title">社区运营官</span>
-                    <span class="exp-time">2023.01 - 2023.09</span>
-                </div>
-                <div class="exp-company">龙湖集团</div>
-                <div class="exp-desc">
-                    负责社区项目的品牌与品质宣传，策划并落地20余场社区活动，场均100+业主参与，好评率98%。
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">专业技能</h2>
-            <div class="skills">
-                <span class="skill-tag">内容生产</span>
-                <span class="skill-tag">舆情分析</span>
-                <span class="skill-tag">AIGC视频创作</span>
-                <span class="skill-tag">国际传播</span>
-                <span class="skill-tag">新媒体运营</span>
-                <span class="skill-tag">英语CET-6</span>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">AI作品</h2>
-            <div class="experience">
-                <div class="exp-header">
-                    <span class="exp-title">《救赎之战》</span>
-                </div>
-                <div class="exp-desc">
-                    <iframe width="100%" height="400" scrolling="no" frameborder="0" src="//player.bilibili.com/player.html?bvid=BV1shZ4BFEkm&page=1&autoplay=0" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="experience">
-                <div class="exp-header">
-                    <span class="exp-title">《末日便利店》</span>
-                    <span class="exp-time">2min03S</span>
-                </div>
-                <div class="exp-desc">基于小说文本，独立完成从分镜到剪辑的完整AIGC视频流程</div>
-            </div>
-            <div class="experience">
-                <div class="exp-header">
-                    <span class="exp-title">《冰雾》</span>
-                    <span class="exp-time">2min10S</span>
-                </div>
-                <div class="exp-desc">基于游戏角色设定的原创CG视频</div>
-            </div>
-            <div class="experience">
-                <div class="exp-header">
-                    <span class="exp-title">《交给AI》</span>
-                    <span class="exp-time">13秒创意广告</span>
-                </div>
-                <div class="exp-desc">原创概念短广告，探索AI在广告表达中的创意可能性</div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">获奖经历</h2>
-            <ul class="awards">
-                <li>🏆 重庆市《渝尚法》大学生AI短视频大赛 三等奖</li>
-                <li>🏅 西南政法大学 校级二等奖学金</li>
-                <li>🏅 成都大学 校级二等奖学金</li>
-            </ul>
-        </div>
-        
-        <div class="footer">
-            © 2026 刘杨 | 欢迎联系
         </div>
     </div>
 </body>
