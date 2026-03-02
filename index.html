@@ -10,9 +10,69 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
+        /* 轮播背景 */
+        .bg-slider {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: slideFade 20s infinite;
+        }
+        .bg-slide:nth-child(1) {
+            background-image: url('背景图片/087b71a36a2bff1adffa15580db47fbf.jpg');
+            animation-delay: 0s;
+        }
+        .bg-slide:nth-child(2) {
+            background-image: url('背景图片/246f554cdd6e7213bd5e8f6fa0b0f703.jpg');
+            animation-delay: 5s;
+        }
+        .bg-slide:nth-child(3) {
+            background-image: url('背景图片/6f9cd4b69f6bbdc662448587f2a6971c.jpg');
+            animation-delay: 10s;
+        }
+        .bg-slide:nth-child(4) {
+            background-image: url('背景图片/9e8dffc186a336a02affab7f187ac7a1.jpg');
+            animation-delay: 15s;
+        }
+        
+        @keyframes slideFade {
+            0%, 25% {
+                opacity: 0;
+            }
+            30%, 95% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        /* 暗色遮罩，让文字更清晰 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 40px 20px;
         }
@@ -24,17 +84,19 @@
         }
         .left-column {
             flex: 6;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         .right-column {
             flex: 4;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -45,6 +107,7 @@
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .header .title {
             font-size: 1.2em;
@@ -204,6 +267,15 @@
     </style>
 </head>
 <body>
+    <!-- 轮播背景 -->
+    <div class="bg-slider">
+        <div class="bg-slide"></div>
+        <div class="bg-slide"></div>
+        <div class="bg-slide"></div>
+        <div class="bg-slide"></div>
+    </div>
+    <div class="overlay"></div>
+    
     <div class="main-container">
         <!-- 左边：简历 -->
         <div class="left-column">
