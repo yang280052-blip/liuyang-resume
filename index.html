@@ -282,6 +282,30 @@
             font-size: 0.9em;
         }
         
+        /* 音乐控制按钮 */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .music-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
         @media (max-width: 1200px) {
             .motto-left, .motto-right {
                 display: none;
@@ -318,6 +342,11 @@
     </style>
 </head>
 <body>
+    <!-- 背景音乐 -->
+    <audio id="bgm" loop>
+        <source src="才二十三.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-control" onclick="toggleMusic()">🎵</div>
     <!-- 背景 -->
     <div class="bg-image"></div>
     <div class="overlay"></div>
@@ -478,6 +507,23 @@
         </div>
         
         <script>
+            // 音乐控制
+            const bgm = document.getElementById('bgm');
+            const musicBtn = document.querySelector('.music-control');
+            let isPlaying = false;
+            
+            function toggleMusic() {
+                if (isPlaying) {
+                    bgm.pause();
+                    musicBtn.textContent = '🎵';
+                } else {
+                    bgm.play().catch(e => console.log('需要用户交互才能播放'));
+                    musicBtn.textContent = '🔊';
+                }
+                isPlaying = !isPlaying;
+            }
+            
+            // 视频点击播放
             document.querySelectorAll('.video-title').forEach(title => {
                 title.addEventListener('click', function() {
                     this.parentElement.classList.toggle('active');
