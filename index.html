@@ -289,21 +289,37 @@
             right: 20px;
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
         .music-control:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
+            transform: scale(1.15);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.4);
+        }
+        .music-control .tip {
+            position: absolute;
+            bottom: -25px;
+            font-size: 10px;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .music-control:hover .tip {
+            opacity: 1;
         }
         
         @media (max-width: 1200px) {
@@ -346,7 +362,7 @@
     <audio id="bgm" loop>
         <source src="才二十三.mp3" type="audio/mpeg">
     </audio>
-    <div class="music-control" onclick="toggleMusic()">🎵</div>
+    <div class="music-control" onclick="toggleMusic()">🎵<span class="tip">点击播放</span></div>
     <!-- 背景 -->
     <div class="bg-image"></div>
     <div class="overlay"></div>
@@ -515,10 +531,10 @@
             function toggleMusic() {
                 if (isPlaying) {
                     bgm.pause();
-                    musicBtn.textContent = '🎵';
+                    musicBtn.innerHTML = '🎵<span class="tip">点击播放</span>';
                 } else {
                     bgm.play().catch(e => console.log('需要用户交互才能播放'));
-                    musicBtn.textContent = '🔊';
+                    musicBtn.innerHTML = '🔊<span class="tip">播放中</span>';
                 }
                 isPlaying = !isPlaying;
             }
